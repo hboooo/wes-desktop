@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesCommonStyle.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesBaseWindow.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesDataGrid.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesTabControl.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesTabItem.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/ImageGeometryData.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/GroupBoxStyle.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesProgressRing.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/OptionTabItem.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/ModernProgressRingStyles.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesFlowListBox.xaml" />
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/ChatStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

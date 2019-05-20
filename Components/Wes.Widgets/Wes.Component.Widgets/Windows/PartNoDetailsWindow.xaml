@@ -1,0 +1,23 @@
+﻿<desktop:BaseWindow x:Class="Wes.Component.Widgets.Windows.PartNoDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
+        xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+        xmlns:desktop="clr-namespace:Wes.Desktop.Windows;assembly=Wes.Desktop.Windows"
+        xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls;assembly=Wes.Desktop.Windows"            
+        Title="{lang:Language 料号详情}" x:Name="partNoDetailsWindow" Width="1000" MinWidth="1000" Height="550" MinHeight="550">
+    <Grid>
+        <controls:DataGrid FontSize="12" IsReadOnly="True"  CanUserSortColumns="False" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Row="1" x:Name="dataGridDetails">
+            <controls:DataGrid.Columns>
+                <controls:DataGridOrderColumn Header="SEQ" />
+                <controls:DataGridTextColumn Header="PackageID" Binding="{Binding pid}" Width="*" />
+                <controls:DataGridTextColumn Header="PartNo" Binding="{Binding partNo}" Width="*" />
+                <controls:DataGridTextColumn Header="Ctns" Binding="{Binding ctns}" Width="80" />
+                <controls:DataGridTextColumn Header="Qty" Binding="{Binding qty}" Width="80" />
+                <controls:DataGridTextColumn Header="BatchNo" Binding="{Binding batcnNo}" Width="100" />
+                <controls:DataGridTextColumn Header="ProductionDate" Binding="{Binding productionDate}" Width="150" />
+                <controls:DataGridTextColumn Header="BoxNo" Binding="{Binding boxNo}" Width="100" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</desktop:BaseWindow>

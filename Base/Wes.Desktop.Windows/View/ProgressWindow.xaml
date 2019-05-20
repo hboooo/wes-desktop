@@ -1,0 +1,22 @@
+﻿<desktop:BaseWindow x:Class="Wes.Desktop.Windows.View.ProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" MinWidth="380" Width="320" MinHeight="160" SizeToContent="Height"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        xmlns:desktop="clr-namespace:Wes.Desktop.Windows" ResizeMode="NoResize" 
+        Title="進度" x:Name="progressWindow">
+    <Grid VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="20 0 20 8" TextWrapping="WrapWithOverflow" Text="{Binding ProgressText,ElementName=progressWindow}" />
+        <ProgressBar Margin="20 0" x:Name="progressBar" Grid.Row="1"
+                     Minimum="{Binding MinValue,ElementName=progressWindow}" 
+                     Maximum="{Binding MaxValue,ElementName=progressWindow}" 
+                     Value="{Binding Value,ElementName=progressWindow}" 
+                     Height="15"/>
+    </Grid>
+</desktop:BaseWindow>

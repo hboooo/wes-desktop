@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="MainWindowTitle">WES</sys:String>
+	<sys:String x:Key="Settings">Settings...</sys:String>
+	<sys:String x:Key="Minimize">Minimize</sys:String>
+	<sys:String x:Key="Restore">Restore</sys:String>
+	<sys:String x:Key="Maximize">Maximize</sys:String>
+	<sys:String x:Key="Close">Close</sys:String>
+	<sys:String x:Key="Loading">Loading{0}...</sys:String>
+	<sys:String x:Key="Addin_Unrealize">{0} Addin Unrealize, Please contact the administrator</sys:String>
+	<sys:String x:Key="AddInName">Addins</sys:String>
+	<sys:String x:Key="Exit">Exit</sys:String>
+	<sys:String x:Key="About">About</sys:String>
+	<sys:String x:Key="Logout">Log out</sys:String>
+	<sys:String x:Key="MainVersion">Version:</sys:String>
+	<sys:String x:Key="BarcodeTooltip">Please scan job number</sys:String>
+	<sys:String x:Key="BarcodeConfirmTooltip">Customer:</sys:String>
+	<sys:String x:Key="CustmerNotImplement">Addin Unrealize, please scan again</sys:String>
+	<sys:String x:Key="DownloadLabelTemplates">Download label template success,template:</sys:String>
+	<sys:String x:Key="UploadLog">Upload Log...</sys:String>
+	<sys:String x:Key="UpdateLabelTemplate">Upload Label Template</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<sys:String x:Key="WES_Message">WES 提示</sys:String>
+	<sys:String x:Key="System_Message">系统提示</sys:String>
+	<sys:String x:Key="OkButton">确定</sys:String>
+	<sys:String x:Key="CancelButton">取消</sys:String>
+	<sys:String x:Key="Cancel">取消</sys:String>
+	<sys:String x:Key="YesButton">是</sys:String>
+	<sys:String x:Key="NoButton">否</sys:String>
+	<sys:String x:Key="CloseButton">关闭</sys:String>
+	<sys:String x:Key="Clear">清空</sys:String>
+	<sys:String x:Key="Support">支援</sys:String>
+	<sys:String x:Key="Tooltip">提示：</sys:String>
+	<sys:String x:Key="Please_Scan">请扫描 </sys:String>
+	<sys:String x:Key="Initialize_Printer">初始化打印机...</sys:String>
+	<sys:String x:Key="Search">查找</sys:String>
+	<sys:String x:Key="Export">导出</sys:String>
+</ResourceDictionary>

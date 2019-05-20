@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{042D18D8-8038-4A3E-9AA7-F230649B141B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wes.Desktop.Windows</RootNamespace>
+    <AssemblyName>Wes.Desktop.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\setup\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\setup\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\setup\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\setup\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.2.0.3\lib\net40\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FirstFloor.ModernUI.1.0.1\lib\FirstFloor.ModernUI.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=0e453835af4ee6ce, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=f46ff315b1088208, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Windows.Shell.1.0.1\lib\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmLightLibs.5.4.1.1\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ChatControl.xaml.cs">
+      <DependentUpon>ChatControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChatMessage.cs" />
+    <Compile Include="Controls\ScrollingListBox.cs" />
+    <Compile Include="Converters\ObjectToBooleanConverter.cs" />
+    <Compile Include="DebugCommand\MenuAppendType.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Updater\WesUpdater.cs" />
+    <Compile Include="View\RobotWindow.xaml.cs">
+      <DependentUpon>RobotWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgressWindow.xaml.cs">
+      <DependentUpon>ProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PcsWindow.xaml.cs">
+      <DependentUpon>PcsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BaseWindowViewModel.cs" />
+    <Compile Include="Common\ActiveCheckLabelWindow.xaml.cs">
+      <DependentUpon>ActiveCheckLabelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\MasterAuthorService.cs" />
+    <Compile Include="Controls\BarCodeScanFrame.xaml.cs">
+      <DependentUpon>BarCodeScanFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BaseWindow.cs" />
+    <Compile Include="Common\MasterAuthorWindow.xaml.cs">
+      <DependentUpon>MasterAuthorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WesTeamSupport.xaml.cs">
+      <DependentUpon>WesTeamSupport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\WesUpdateBinNo.xaml.cs">
+      <DependentUpon>WesUpdateBinNo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BarCodeScanModel.cs" />
+    <Compile Include="Controls\DataGrid\DataGridCheckBoxColumn.cs" />
+    <Compile Include="Controls\DataGrid\DataGridComboBoxColumn.cs" />
+    <Compile Include="Controls\DataGrid\DataGridOrderColumn.cs" />
+    <Compile Include="Controls\DataGrid\DataGridRowHelper.cs" />
+    <Compile Include="Controls\DataGrid\DataGridTextColumn.cs" />
+    <Compile Include="Controls\DataGrid\DataGrid.cs" />
+    <Compile Include="Controls\NumericTextBox.cs" />
+    <Compile Include="Controls\WesGridSow.xaml.cs">
+      <DependentUpon>WesGridSow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WesCommonSow.xaml.cs">
+      <DependentUpon>WesCommonSow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WesImageListViewer.xaml.cs">
+      <DependentUpon>WesImageListViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WesTabItem.cs" />
+    <Compile Include="Controls\WorkFlowItem.cs" />
+    <Compile Include="Converters\BaseWindowMaskConverter.cs" />
+    <Compile Include="Converters\BaseWindowTagtoVisibilityConverter.cs" />
+    <Compile Include="Converters\BooleanToMarkVisibilityConverter.cs" />
+    <Compile Include="Converters\DynamicToBooleanConverter.cs" />
+    <Compile Include="Converters\GroupViewConverter.cs" />
+    <Compile Include="Converters\HalfValueConverter.cs" />
+    <Compile Include="Converters\ThirdValueConverter.cs" />
+    <Compile Include="DebugCommand\BaseDebugCommand.cs" />
+    <Compile Include="DebugCommand\DebugCommandService.cs" />
+    <Compile Include="DebugCommand\ExportDebugCommandAttribute.cs" />
+    <Compile Include="DebugCommand\SysScanHistoryCommand.cs" />
+    <Compile Include="DebugCommand\SysLogCommand.cs" />
+    <Compile Include="DebugCommand\SysInfoCommand.cs" />
+    <Compile Include="DebugCommand\SysSettingsCommand.cs" />
+    <Compile Include="DebugCommand\CommandComposition.cs" />
+    <Compile Include="KPI\AmoebaKpiHandler.cs" />
+    <Compile Include="KPI\AmoebaKpiAction.cs" />
+    <Compile Include="KPI\AmoebaKpiDataAdapter.cs" />
+    <Compile Include="KPI\KPIScriptID.cs" />
+    <Compile Include="Listener\AvnetKPIListenInvoker.cs" />
+    <Compile Include="Listener\ActionFlowActionNotify.cs" />
+    <Compile Include="Listener\KPIListenInvoker.cs" />
+    <Compile Include="Listener\ListenInvokerProvider.cs" />
+    <Compile Include="Model\AmoebaDifficultyModel.cs" />
+    <Compile Include="Model\AmoebaProductivityModel.cs" />
+    <Compile Include="Options\IOptionControl.cs" />
+    <Compile Include="Options\OptionConfigureService.cs" />
+    <Compile Include="Options\OptionTabControlBase.cs" />
+    <Compile Include="Options\OptionTabItem.cs" />
+    <Compile Include="Options\View\FontSizeAppearance.cs" />
+    <Compile Include="Options\View\SettingsAppearance.xaml.cs">
+      <DependentUpon>SettingsAppearance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\View\SettingsAppearanceViewModel.cs" />
+    <Compile Include="Options\View\SettingsGeneralViewModel.cs" />
+    <Compile Include="Options\View\SettingsGeneral.xaml.cs">
+      <DependentUpon>SettingsGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\View\SettingsLanguage.xaml.cs">
+      <DependentUpon>SettingsLanguage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\View\SettingsLanguageViewModel.cs" />
+    <Compile Include="Options\View\SettingsPrinter.xaml.cs">
+      <DependentUpon>SettingsPrinter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\View\SettingsPrinterViewModel.cs" />
+    <Compile Include="Options\View\SettingsSerialPort4Print.xaml.cs">
+      <DependentUpon>SettingsSerialPort4Print.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\View\SettingsSerialPort4PrintModel.cs" />
+    <Compile Include="Options\View\SettingWindow.xaml.cs">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Printer\IPrintModalWindow.cs" />
+    <Compile Include="Printer\ModalItemValue.cs" />
+    <Compile Include="Printer\MutiPrintModalWindow.cs" />
+    <Compile Include="Printer\PrintModalWindowBase.cs" />
+    <Compile Include="Printer\SerialPortManager.cs" />
+    <Compile Include="Model\CommonSowModel.cs" />
+    <Compile Include="Model\CommonUpdateBinNoModel.cs" />
+    <Compile Include="Options\SerialPortProvider.cs" />
+    <Compile Include="Model\VerificationType.cs" />
+    <Compile Include="ViewModel\GridSowViewModel.cs" />
+    <Compile Include="View\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoadFlowMudule.cs" />
+    <Compile Include="View\PrintModalWindowProvider.cs" />
+    <Compile Include="View\ScanHistoryWindow.xaml.cs">
+      <DependentUpon>ScanHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UploadLogWindow.xaml.cs">
+      <DependentUpon>UploadLogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WesFlowWindow.xaml.cs">
+      <DependentUpon>WesFlowWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowUtils\BaseWindowCommand.cs" />
+    <Compile Include="WindowUtils\WesDesktopSounds.cs" />
+    <Compile Include="WindowUtils\WesModernDialog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowUtils\WindowRelayCommand.cs" />
+    <Compile Include="WindowUtils\WindowHelper.cs" />
+    <Compile Include="WindowUtils\WindowKeyboardHook.cs" />
+    <Compile Include="WindowUtils\WorkNoFlowService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Wes.Addins\Wes.Addins.csproj">
+      <Project>{aff9888d-f330-47e3-958f-1127fbf47885}</Project>
+      <Name>Wes.Addins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Wes.Core\Wes.Core.csproj">
+      <Project>{8f2b9471-392c-4722-839b-593c63ca7cf4}</Project>
+      <Name>Wes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\AutoCompleteBox\AutoCompleteBox.csproj">
+      <Project>{bc1cd2ad-698c-4048-b4fc-638faf2fc9b5}</Project>
+      <Name>AutoCompleteBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wes.Flow\Wes.Flow.csproj">
+      <Project>{AB32333A-6472-4DE7-850D-5E25B8BCCDF8}</Project>
+      <Name>Wes.Flow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wes.Print\Wes.Print.csproj">
+      <Project>{f877da1b-c10d-4a90-a229-1db9e727a1ef}</Project>
+      <Name>Wes.Print</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wes.Utilities\Wes.Utilities.csproj">
+      <Project>{444b162b-e037-4cf8-b7ea-ae6be0b86ff7}</Project>
+      <Name>Wes.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wes.Wrapper\Wes.Wrapper.csproj">
+      <Project>{d1d40c00-29dd-44ee-b28c-1705e58a0ca6}</Project>
+      <Name>Wes.Wrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Common\ActiveCheckLabelWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BarCodeScanFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\MasterAuthorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\WesTeamSupport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\WesUpdateBinNo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WesGridSow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WesCommonSow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChatControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WesImageListViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Options\View\SettingsAppearance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\View\SettingsGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\View\SettingsLanguage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\View\SettingsPrinter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\View\SettingsSerialPort4Print.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\View\SettingWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ChatStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesFlowListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ImageGeometryData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ModernProgressRingStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ModernUI.House.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ModernUI.Truck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\OptionTabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesProgressRing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesBaseWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\GroupBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesCommonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesTabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WesTabItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\RobotWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ProgressWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PcsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ScanHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UploadLogWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\WesFlowWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

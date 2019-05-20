@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="MainWindowTitle">WES</sys:String>
+	<sys:String x:Key="Settings">設置...</sys:String>
+	<sys:String x:Key="Minimize">最小化</sys:String>
+	<sys:String x:Key="Restore">恢復</sys:String>
+	<sys:String x:Key="Maximize">最大化</sys:String>
+	<sys:String x:Key="Close">關閉</sys:String>
+	<sys:String x:Key="Loading">加載{0}...</sys:String>
+	<sys:String x:Key="Addin_Unrealize">{0} 功能未實現,請聯繫管理員</sys:String>
+	<sys:String x:Key="AddInName">功能</sys:String>
+	<sys:String x:Key="Exit">退出</sys:String>
+	<sys:String x:Key="About">關於</sys:String>
+	<sys:String x:Key="Logout">註銷</sys:String>
+	<sys:String x:Key="MainVersion">版本:</sys:String>
+	<sys:String x:Key="BarcodeTooltip">請掃描作業單號,確認客戶信息</sys:String>
+	<sys:String x:Key="BarcodeConfirmTooltip">客戶信息:</sys:String>
+	<sys:String x:Key="CustmerNotImplement">客戶功能未實現,請重新掃描</sys:String>
+	<sys:String x:Key="DownloadLabelTemplates">下載模板成功,模板:</sys:String>
+	<sys:String x:Key="UploadLog">上傳日誌...</sys:String>
+	<sys:String x:Key="UpdateLabelTemplate">更新標籤</sys:String>
+</ResourceDictionary>

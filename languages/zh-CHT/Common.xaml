@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<sys:String x:Key="WES_Message">WES 提示</sys:String>
+	<sys:String x:Key="System_Message">系統提示</sys:String>
+	<sys:String x:Key="OkButton">確定</sys:String>
+	<sys:String x:Key="CancelButton">取消</sys:String>
+	<sys:String x:Key="Cancel">取消</sys:String>
+	<sys:String x:Key="YesButton">是</sys:String>
+	<sys:String x:Key="NoButton">否</sys:String>
+	<sys:String x:Key="CloseButton">關閉</sys:String>
+	<sys:String x:Key="Clear">清空</sys:String>
+	<sys:String x:Key="Support">支援</sys:String>
+	<sys:String x:Key="Tooltip">提示：</sys:String>
+	<sys:String x:Key="Please_Scan">請掃描 </sys:String>
+	<sys:String x:Key="Initialize_Printer">初始化打印機...</sys:String>
+	<sys:String x:Key="Search">查找</sys:String>
+	<sys:String x:Key="Export">導出</sys:String>
+	<sys:String x:Key="AddinEndCustomerNotMatch">當前窗口為{0}專用,不適於當前的單號,請確認!</sys:String>
+</ResourceDictionary>

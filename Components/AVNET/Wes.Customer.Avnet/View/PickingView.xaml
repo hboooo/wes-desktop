@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="Wes.Customer.Avnet.View.PickingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:command="http://www.galasoft.ch/mvvmlight"
+             xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls;assembly=Wes.Desktop.Windows"
+             xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+             mc:Ignorable="d" MinWidth="512" MinHeight="400" d:DesignWidth="1024"  d:DesignHeight="768">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}"
+                                    PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <sys:Double x:Key="Double-14">14</sys:Double>
+        <sys:Double x:Key="Double-50">50</sys:Double>
+        <Brush x:Key="Brush-E21918">#E21918</Brush>
+        <Brush x:Key="Brush-7E7E7E">#7E7E7E</Brush>
+        <Brush x:Key="Brush-ED7D31">#ED7D31</Brush>
+        <sys:Double x:Key="Double-30">30</sys:Double>
+        <sys:Double x:Key="Double-60">70</sys:Double>
+        <sys:Double x:Key="Double-100">100</sys:Double>
+        <sys:Double x:Key="Double-300">250</sys:Double>
+        <Brush x:Key="Brush-3C3F41">#3C3F41</Brush>
+    </UserControl.Resources>
+    <Grid Margin="7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+                <DockPanel  LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                        <controls:BarCodeScanFrame DataContext="{Binding}" x:Name="barCodeFrame"
+                                               ScanBoxValue="{Binding ScanValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               ScanTooltip="{Binding Tooltip, Mode=OneWay}"
+                                               CodeBoxKeyDown="{Binding ScanCommand,Mode=OneWay}"
+                                               CodeBoxClear="{Binding ClearCommand, Mode=OneWay}"
+                                               CodeBoxSupport="{Binding SupportCommand, Mode=OneWay}"    />
+
+                        <WrapPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                                <TextBlock Margin="0 0 7 0" 
+                               Width="{StaticResource Double-100}" TextAlignment="Right" Text="當前箱號"
+                               FontSize="{StaticResource Double-14}" VerticalAlignment="Center" />
+                                <TextBox Width="{StaticResource Double-300}" Text="{Binding Path=Info.currentPid, Mode=OneWay}"
+                             FontSize="{StaticResource Double-14}"
+                             Height="{StaticResource Double-30}" IsEnabled="false" VerticalContentAlignment="Center" />
+                            </DockPanel>
+                            <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                                <TextBlock Margin="0 0 7 0" 
+                               Width="{StaticResource Double-100}" TextAlignment="Right" Text="當前儲位"
+                               FontSize="{StaticResource Double-14}" VerticalAlignment="Center" />
+                                <TextBox Width="{StaticResource Double-300}" Text="{Binding Path=Info.currentBinNo, Mode=OneWay}"
+                             FontSize="{StaticResource Double-14}"
+                             Height="{StaticResource Double-30}"
+                              IsEnabled="false" VerticalContentAlignment="Center" />
+                            </DockPanel>
+                            <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                                <TextBlock Margin="0 0 7 0" 
+                               Width="{StaticResource Double-100}" TextAlignment="Right" Text="本單待揀"
+                               FontSize="{StaticResource Double-14}" VerticalAlignment="Center" />
+                                <TextBox Width="{StaticResource Double-300}" Text="{Binding Info.totalPxtQty, Mode=OneWay}"
+                             FontSize="{StaticResource Double-14}"
+                             Height="{StaticResource Double-30}"
+                              IsEnabled="false" VerticalContentAlignment="Center" />
+                            </DockPanel>
+                            <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                                <TextBlock Margin="0 0 7 0" 
+                               Width="{StaticResource Double-100}" TextAlignment="Right" Text="本箱待揀"
+                               FontSize="{StaticResource Double-14}" VerticalAlignment="Center" />
+                                <TextBox Width="{StaticResource Double-300}" Text="{Binding Info.totalPidQty, Mode=OneWay}"
+                             FontSize="{StaticResource Double-14}"
+                             Height="{StaticResource Double-30}"
+                              IsEnabled="false" VerticalContentAlignment="Center" />
+                            </DockPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </DockPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Info.scanningPn, Mode=OneWay}" FontWeight="Bold"  Foreground="{StaticResource Brush-ED7D31}" FontSize="18" Width="700" TextAlignment="Left"   HorizontalAlignment="Left" />
+            </StackPanel>
+            <controls:DataGrid Grid.Row="1" FontSize="12" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                          ItemsSource="{Binding Info.scanning, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridOrderColumn Header="SEQ" />
+                    <controls:DataGridTextColumn Header="FactoryPartNo" Binding="{Binding FactoryPN}" Width="*" />
+                    <controls:DataGridTextColumn Header="AvnetPartNo" Binding="{Binding PartNo}" Width="*" />
+                    <controls:DataGridTextColumn Header="DateCode" Binding="{Binding DataCode}" Width="*" />
+                    <controls:DataGridTextColumn Header="LotNO" Binding="{Binding LotNos}" Width="*" />
+                    <controls:DataGridTextColumn Header="Qty" Binding="{Binding Qty}" Width="*" />
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Next" FontSize="18" Width="100" TextAlignment="Left" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Info.nextBinNo, Mode=OneWay}" FontWeight="Bold" Foreground="{StaticResource Brush-ED7D31}" FontSize="18" Width="250" TextAlignment="Left" VerticalAlignment="Center" />
+            </StackPanel>
+            <controls:DataGrid Grid.Row="1" FontSize="12" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                          ItemsSource="{Binding Info.next, Mode=OneWay}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridOrderColumn Header="SEQ" />
+                    <controls:DataGridTextColumn Header="PackageID" Binding="{Binding PackageID}" Width="*" />
+                    <controls:DataGridTextColumn Header="Reels" Binding="{Binding Reels}" Width="*" />
+                    <controls:DataGridTextColumn Header="Qty" Binding="{Binding Qty}" Width="*" />
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="To-do List" FontSize="18" Width="100" TextAlignment="Left" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Info.totalPidCount, Mode=OneWay}" FontWeight="Bold"  Foreground="{StaticResource Brush-ED7D31}" FontSize="18" Width="150" TextAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <controls:DataGrid  FontSize="12" IsReadOnly="True" Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False"
+                          ItemsSource="{Binding Info.todo, Mode=OneWay}"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridOrderColumn Header="SEQ" />
+                    <controls:DataGridTextColumn Header="BinNo" Binding="{Binding BinNo}" Width="*" />
+                    <controls:DataGridTextColumn Header="PackageID" Binding="{Binding PackageID}" Width="*" />
+                    <controls:DataGridTextColumn Header="Reels" Binding="{Binding Reels}" Width="*" />
+                    <controls:DataGridTextColumn Header="Qty" Binding="{Binding Qty}" Width="*" />
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

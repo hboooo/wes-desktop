@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="LoginWindowTitle">Login</sys:String>
+	<sys:String x:Key="UserID">User ID</sys:String>
+	<sys:String x:Key="Password">Password</sys:String>
+	<sys:String x:Key="Station">Station</sys:String>
+	<sys:String x:Key="EndCustomer">Customer</sys:String>
+	<sys:String x:Key="Login">Login</sys:String>
+	<sys:String x:Key="AccountError">Account error,please try scanning again</sys:String>
+	<sys:String x:Key="DeviceError">Device error, please try scanning again</sys:String>
+	<sys:String x:Key="AccountNull">Please enter the account</sys:String>
+	<sys:String x:Key="PasswordNull">Please enter the password</sys:String>
+	<sys:String x:Key="StationNull">Please scan the station</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,60 @@
+﻿<base:OptionTabControlBase x:Class="Wes.Desktop.Windows.Options.View.SettingsGeneral"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:base ="clr-namespace:Wes.Desktop.Windows.Options"
+              xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls"
+             xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+             mc:Ignorable="d" >
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="Panel" MinWidth="150" HorizontalAlignment="Stretch">
+                <TextBlock Text="工作站" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition MinWidth="120"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Column="1" Header="打印設置">
+                        <StackPanel Orientation="Vertical" Margin="5 0 0 0">
+                            <Button Content="測試本機打印" Height="25" Margin="0 10 0 5" MinWidth="100" HorizontalAlignment="Left" Command="{Binding TestLocalPrintCommand}"></Button>
+                            <CheckBox Content="打印時顯示Label圖片" Margin="0 5 0 10" IsChecked="{Binding SelectedDisplayLabelImage,Mode=TwoWay}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Grid.Column="1" Header="消息服務" Margin="0 10 0 0">
+                        <Grid Margin="0 10 0 10" Height="25" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5 0 0 0">
+                                <TextBlock Text="服務端口：" VerticalAlignment="Center"/>
+                                <controls:NumericTextBox VerticalContentAlignment="Center" MaxLength="5" MinWidth="65" Margin="2 0 0 0" Text="{Binding SelectedPort}"/>
+                                <Button Content="啟動" MinWidth="65" Margin="20 0 0 0" Command="{Binding StartServerCommand}"/>
+                                <Button Content="停止" MinWidth="65" Margin="20 0 0 0" Command="{Binding StopServerCommand}"/>
+                                <Button Content="測試服務打印" MinWidth="100" Margin="20 0 0 0" Command="{Binding TestPrintCommand}"/>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="2" Grid.Column="1" Header="警报器设置" Margin="0 10 0 0">
+                        <StackPanel Orientation="Horizontal" Margin="5 5 5 5" >
+                            <TextBlock Text="通讯地址：" VerticalAlignment="Center"/>
+                            <TextBox Width="120" Text="{Binding SelectedAlarmDeviceIP}" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="25"/>
+                            <TextBlock Text="通讯端口：" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                            <controls:NumericTextBox VerticalAlignment="Center" Height="25" Text="{Binding SelectedAlarmDevicePort}" VerticalContentAlignment="Center" MaxLength="5" MinWidth="65" Margin="2 0 0 0"/>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</base:OptionTabControlBase>

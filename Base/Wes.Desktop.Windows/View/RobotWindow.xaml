@@ -1,0 +1,12 @@
+﻿<desktop:BaseWindow x:Class="Wes.Desktop.Windows.View.RobotWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" MinWidth="610" Width="610" MinHeight="600" Height="600"
+        WindowStartupLocation="CenterScreen"
+        xmlns:desktop="clr-namespace:Wes.Desktop.Windows"
+        xmlns:control="clr-namespace:Wes.Desktop.Windows.Controls"
+        Title="欢迎来咨询" x:Name="aboutWindow"            >
+    <control:ChatControl x:Name="chat"/>
+</desktop:BaseWindow>

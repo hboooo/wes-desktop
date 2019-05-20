@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Wes.Desktop.Windows.Controls.WesGridSow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid>
+        <StackPanel  Background="{Binding Background}" MouseDown="SP_MouseDown">
+            <TextBlock  Text="{Binding Num}" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                        Height="100" FontSize="{Binding NumFontSize}" FontWeight="Bold" Foreground="{Binding NumForeground}"/>
+            <TextBlock  Text="{Binding QtyDesc}" VerticalAlignment="Center" TextAlignment="Center" FontSize="24"/>
+            <TextBlock  Text="{Binding NCartonNo}" Margin="0 10 0 0" TextAlignment="Center" FontSize="18"  Foreground="{Binding NCartonForeground}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

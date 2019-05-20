@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--仓庫操作 -->
+	<sys:String x:Key="FLOW_ACTION_SCAN_PICKING_NO">Picking No</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_TRUCK_NO">Truck Order</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_MPN">MPN</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_QRCODE">QRCode</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_PACKAGE_ID">PackageID</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_STORAGE_SPAVES">Bin No</sys:String>
+	<sys:String x:Key="FLOW_ACTION_ENTRY_DIM">DIM</sys:String>
+	<sys:String x:Key="FLOW_ACTION_ENTRY_GW">GW</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_QTY">QTY</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_NIPPON">Nippon</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_RECEIVING_NO">Receiving No</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_TOTAL_RECEIVE">Total of Carton</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_PALLET_ID">Pallet ID</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_PART_NO">Part No</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_CARTON_NO">Carton No</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_NEW_CARTON_NO">New Carton NO</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_CHECK_NEW_CARTON_NO">New Carton NO</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_LOT_NO">Lot</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_DC_NO">Date Code</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_PN_OR_QRCODE">PN Or QrCode</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_PID_OR_PN_OR_CLCODE_OR_QRCODE">PID Or PN Or CLCode Or QrCode</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_COO">COO</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_PALLET_OR_CARTON">Pallet ID or Carton ID</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_COMMAND">Command</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_LOADING_NO">Loading NO</sys:String>
+	<sys:String x:Key="FLOW_ACTION_SCAN_COMMAND_OR_PN">Command OR PartNo</sys:String>
+	<!--入庫流程 -->
+	<sys:String x:Key="FLOW_IN">入庫</sys:String>
+	
+	<sys:String x:Key="FLOW_IN_PALLET_TO_CARTON">板轉箱</sys:String>
+	<sys:String x:Key="FLOW_IN_GATHER">採集</sys:String>
+	<sys:String x:Key="FLOW_IN_SHELF">上架</sys:String>
+	<sys:String x:Key="FLOW_GATHER_ABNORMAL">採集異常</sys:String>
+	<sys:String x:Key="FLOW_IN_STORAGE_MOVE_COLLECTING">轉倉採集</sys:String>
+	
+	<!--出庫流程 -->
+	<sys:String x:Key="FLOW_OUT">出庫</sys:String>
+	
+	<sys:String x:Key="FLOW_OUT_PICKING">揀貨</sys:String>
+	<sys:String x:Key="FLOW_OUT_SOW">分播</sys:String>
+	<sys:String x:Key="FLOW_OUT_PICKING_AND_SOW">揀并合一</sys:String>
+	<sys:String x:Key="FLOW_OUT_LABELING">貼標</sys:String>
+	<sys:String x:Key="FLOW_OUT_CARTON_LABELING">貼箱標</sys:String>
+	<sys:String x:Key="FLOW_OUT_BOARDING">組板</sys:String>
+	<sys:String x:Key="FLOW_OUT_PACKAGEIDINFO_REPORT">箱號查詢</sys:String>
+	<sys:String x:Key="FLOW_OUT_TRANSPORTATION">空運</sys:String>
+	<sys:String x:Key="FLOW_OUT_TRANSPORTATION_LABELING">空運貼標</sys:String>
+	<sys:String x:Key="FLOW_OUT_PICKEDINFO_REPORT">揀貨查詢</sys:String>
+	
+	<!--枚举 -->
+	<sys:String x:Key="System.IO.Ports.StopBits.None">無</sys:String>
+	<sys:String x:Key="System.IO.Ports.StopBits.One">1</sys:String>
+	<sys:String x:Key="System.IO.Ports.StopBits.Two">2</sys:String>
+	<sys:String x:Key="System.IO.Ports.StopBits.OnePointFive">1.5</sys:String>
+	
+	<sys:String x:Key="System.IO.Ports.Parity.None">無</sys:String>
+	<sys:String x:Key="System.IO.Ports.Parity.Odd">Odd</sys:String>
+	<sys:String x:Key="System.IO.Ports.Parity.Even">Even</sys:String>
+	<sys:String x:Key="System.IO.Ports.Parity.Mark">Mark</sys:String>
+	<sys:String x:Key="System.IO.Ports.Parity.Space">Space</sys:String>
+	
+	<sys:String x:Key="Wes.Desktop.Windows.SerialPortMapping.PrintMonitor">打印機防呆</sys:String>
+</ResourceDictionary>

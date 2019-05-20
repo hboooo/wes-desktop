@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Wes.Component.Widgets.View.PickedInfoReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:command="http://www.galasoft.ch/mvvmlight"
+             xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls;assembly=Wes.Desktop.Windows"
+             xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+             mc:Ignorable="d" MinWidth="512" MinHeight="400" d:DesignWidth="1024"  d:DesignHeight="768">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}"
+                                    PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <sys:Double x:Key="Double-24">14</sys:Double>
+        <sys:Double x:Key="Double-30">30</sys:Double>
+        <sys:Double x:Key="Double-50">50</sys:Double>
+        <sys:Double x:Key="Double-60">70</sys:Double>
+        <sys:Double x:Key="Double-300">250</sys:Double>
+        <Brush x:Key="Brush-3C3F41">#3C3F41</Brush>
+        <Brush x:Key="Brush-E21918">#E21918</Brush>
+        <Brush x:Key="Brush-7E7E7E">#7E7E7E</Brush>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True" Margin="7">
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <controls:BarCodeScanFrame DataContext="{Binding}" x:Name="barCodeFrame"
+                                               ScanBoxValue="{Binding ScanValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               ScanTooltip="{Binding Tooltip, Mode=OneWay}"
+                                               CodeBoxKeyDown="{Binding ScanCommand,Mode=OneWay}"
+                                               CodeBoxClear="{Binding ClearCommand, Mode=OneWay}"
+                                              SupportButtonVisibility="Collapsed"/>
+        </StackPanel>
+        <controls:DataGrid Margin="0 7 0 0" FontSize="12" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                  ItemsSource="{Binding Info.PickedInfo, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <controls:DataGrid.Columns>
+                <controls:DataGridOrderColumn Header="SEQ" />
+                <controls:DataGridTextColumn Header="NCartonNo" Binding="{Binding NCartonNo}" Width="*" />
+                <controls:DataGridTextColumn Header="PartNo" Binding="{Binding PartNo}" Width="*" />
+                <controls:DataGridTextColumn Header="BinNo" Binding="{Binding BinNo}" Width="*" />
+                <controls:DataGridTextColumn Header="PackageID" Binding="{Binding PackageID}" Width="*" />
+                <controls:DataGridTextColumn Header="DateCode" Binding="{Binding DateCode}" Width="*" />
+                <controls:DataGridTextColumn Header="Reels" Binding="{Binding Reels}" Width="*" />
+                <controls:DataGridTextColumn Header="Qty" Binding="{Binding Qty}" Width="*" />
+                <controls:DataGridTextColumn Header="Creator" Binding="{Binding Creator}" Width="*" />
+                <controls:DataGridTextColumn Header="CreateDate" Binding="{Binding CreateDate}" Width="*" />
+
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </DockPanel>
+</UserControl>

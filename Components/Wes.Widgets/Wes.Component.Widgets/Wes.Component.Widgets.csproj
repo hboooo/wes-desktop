@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1935F221-8640-4186-913C-A89B0870C9C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wes.Component.Widgets</RootNamespace>
+    <AssemblyName>Wes.Component.Widgets</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\setup\debug\Addins\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\setup\release\Addins\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\setup\debug\Addins\General\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\..\setup\release\Addins\General\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.6\lib\net40\CommonServiceLocator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FirstFloor.ModernUI.1.0.1\lib\FirstFloor.ModernUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=0e453835af4ee6ce, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=f46ff315b1088208, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MvvmLightLibs.5.4.1.1\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.6\lib\net40\Unity.Abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.6\lib\net40\Unity.Container.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.6\lib\net40\Unity.Interception.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unity.5.8.6\lib\net40\Unity.ServiceLocation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\AddinsAssemblyInfo\GeneralAddInAssemblyInfo.cs">
+      <Link>Properties\GeneralAddInAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Action\CollectingAbnormalAction.cs" />
+    <Compile Include="Action\PackageInfoReportAction.cs" />
+    <Compile Include="Action\Pallet2CartonAction.cs" />
+    <Compile Include="Action\PalletizationAction.cs" />
+    <Compile Include="Action\PickedInfoReportAction.cs" />
+    <Compile Include="Action\SimpleScanAction.cs" />
+    <Compile Include="Action\TransportationLabelingAction.cs" />
+    <Compile Include="APIAddr\ScriptSid.cs" />
+    <Compile Include="Command\CollectingAbnormalCommand.cs" />
+    <Compile Include="Command\PackageInfoReportCommand.cs" />
+    <Compile Include="Command\Pallet2CartonCommand.cs" />
+    <Compile Include="Command\PickedInfoReportCommand.cs" />
+    <Compile Include="Command\TransportationCommand.cs" />
+    <Compile Include="KPICommand\ComponentKPICommand.cs" />
+    <Compile Include="Model\BinNoInfoModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\PrintUtil.cs" />
+    <Compile Include="ViewModel\CollectingAbnormalViewModel.cs" />
+    <Compile Include="ViewModel\PackageInfoReportViewModel.cs" />
+    <Compile Include="ViewModel\Pallet2CartonViewModel.cs" />
+    <Compile Include="ViewModel\PalletizationViewModel.cs" />
+    <Compile Include="ViewModel\PickedInfoReportViewModel.cs" />
+    <Compile Include="ViewModel\CollectingScanBinViewModel.cs" />
+    <Compile Include="ViewModel\TransportationLabelingViewModel.cs" />
+    <Compile Include="View\CollectingAbnormalView.xaml.cs">
+      <DependentUpon>CollectingAbnormalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PackageInfoReportView.xaml.cs">
+      <DependentUpon>PackageInfoReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pallet2CartonView.xaml.cs">
+      <DependentUpon>Pallet2CartonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PickedInfoReportView.xaml.cs">
+      <DependentUpon>PickedInfoReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransportationLabelingView.xaml.cs">
+      <DependentUpon>TransportationLabelingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PalletizationView.xaml.cs">
+      <DependentUpon>PalletizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PartNoDetailsWindow.xaml.cs">
+      <DependentUpon>PartNoDetailsWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Wes.Addins\Wes.Addins.csproj">
+      <Project>{aff9888d-f330-47e3-958f-1127fbf47885}</Project>
+      <Name>Wes.Addins</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Wes.Core\Wes.Core.csproj">
+      <Project>{8f2b9471-392c-4722-839b-593c63ca7cf4}</Project>
+      <Name>Wes.Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Base\Wes.Desktop.Windows\Wes.Desktop.Windows.csproj">
+      <Project>{042d18d8-8038-4a3e-9aa7-f230649b141b}</Project>
+      <Name>Wes.Desktop.Windows</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Base\Wes.Flow\Wes.Flow.csproj">
+      <Project>{ab32333a-6472-4de7-850d-5e25b8bccdf8}</Project>
+      <Name>Wes.Flow</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Base\Wes.Print\Wes.Print.csproj">
+      <Project>{f877da1b-c10d-4a90-a229-1db9e727a1ef}</Project>
+      <Name>Wes.Print</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Base\Wes.Utilities\Wes.Utilities.csproj">
+      <Project>{444b162b-e037-4cf8-b7ea-ae6be0b86ff7}</Project>
+      <Name>Wes.Utilities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Base\Wes.Wrapper\Wes.Wrapper.csproj">
+      <Project>{d1d40c00-29dd-44ee-b28c-1705e58a0ca6}</Project>
+      <Name>Wes.Wrapper</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\CollectingAbnormalView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PackageInfoReportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Pallet2CartonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PickedInfoReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TransportationLabelingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PalletizationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\PartNoDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

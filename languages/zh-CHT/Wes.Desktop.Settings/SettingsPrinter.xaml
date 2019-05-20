@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<sys:String x:Key="PrinterConfigTitle">打印機配置</sys:String>
+	<sys:String x:Key="PanLabel">Pan Label</sys:String>
+	<sys:String x:Key="BoxLabel">Box Label</sys:String>
+	<sys:String x:Key="MarkLabel">Mark Label</sys:String>
+	<sys:String x:Key="CartonLabel">Carton Label</sys:String>
+	<sys:String x:Key="CurrentCustomer">當前客戶:</sys:String>
+</ResourceDictionary>

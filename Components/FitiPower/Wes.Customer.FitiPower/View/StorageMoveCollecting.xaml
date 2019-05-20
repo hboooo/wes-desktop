@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="Wes.Customer.FitiPower.View.StorageMoveCollecting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:command="http://www.galasoft.ch/mvvmlight"
+             xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls;assembly=Wes.Desktop.Windows"
+             mc:Ignorable="d" MinWidth="512" MinHeight="400"
+             d:DesignHeight="768" d:DesignWidth="1024">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}"
+                                    PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <sys:Double x:Key="Double-24">14</sys:Double>
+        <sys:Double x:Key="Double-30">30</sys:Double>
+        <sys:Double x:Key="Double-50">50</sys:Double>
+        <sys:Double x:Key="Double-60">70</sys:Double>
+        <sys:Double x:Key="Double-300">250</sys:Double>
+        <Brush x:Key="Brush-3C3F41">#3C3F41</Brush>
+        <Brush x:Key="Brush-E21918">#E21918</Brush>
+        <Brush x:Key="Brush-7E7E7E">#7E7E7E</Brush>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True" Margin="7">
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <controls:BarCodeScanFrame DataContext="{Binding}" x:Name="barCodeFrame"
+                                       ScanBoxValue="{Binding ScanValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       ScanTooltip="{Binding Tooltip, Mode=OneWay}"
+                                       CodeBoxKeyDown="{Binding ScanCommand,Mode=OneWay}"
+                                       CodeBoxClear="{Binding ClearCommand, Mode=OneWay}"
+                                       CodeBoxSupport="{Binding SupportCommand, Mode=OneWay}" />
+            <!--只读input区域-->
+            <WrapPanel Orientation="Horizontal" Margin="0 15 0 0">
+                <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                    <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="Rxt"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                    <TextBox Width="{StaticResource Double-300}" Text="{Binding Path=Info.rxt, Mode=OneWay}"
+                             FontSize="{StaticResource Double-24}"
+                             Height="{StaticResource Double-30}" IsEnabled="false" VerticalContentAlignment="Center" />
+                </DockPanel>
+                <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                    <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="Pid"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                    <TextBox Width="{StaticResource Double-300}" Text="{Binding Path=Info.pid, Mode=OneWay}"
+                             FontSize="{StaticResource Double-24}"
+                             Height="{StaticResource Double-30}" IsEnabled="false" VerticalContentAlignment="Center" />
+                </DockPanel>
+            </WrapPanel>
+        </StackPanel>
+        <controls:DataGrid FontSize="12" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                           ItemsSource="{Binding Info.list, Mode=OneWay}">
+            <controls:DataGrid.Columns>
+                <controls:DataGridOrderColumn Header="SEQ" />
+                <controls:DataGridTextColumn Header="Rid" Binding="{Binding rowNo}" Width="*" Visibility="Collapsed" />
+                <controls:DataGridTextColumn Header="Rxt" Binding="{Binding receivingNo}" Width="*" />
+                <controls:DataGridTextColumn Header="Pid" Binding="{Binding packageID}" Width="*" />
+                <controls:DataGridTextColumn Header="Qty" Binding="{Binding qty}" Width="*" />
+                <controls:DataGridTextColumn Header="Pn" Binding="{Binding partNo}" Width="*" />
+                <controls:DataGridTextColumn Header="Lot" Binding="{Binding lotNos}" Width="*" />
+                <controls:DataGridTextColumn Header="Dc" Binding="{Binding dataCode}" Width="*" />
+
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                CommandParameter="{Binding }"
+                                Content="Delete" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </DockPanel>
+</UserControl>

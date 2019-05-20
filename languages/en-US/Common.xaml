@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<sys:String x:Key="WES_Message">WES message</sys:String>
+	<sys:String x:Key="System_Message">System message</sys:String>
+	<sys:String x:Key="OkButton">OK</sys:String>
+	<sys:String x:Key="CancelButton">Cancel</sys:String>
+	<sys:String x:Key="Cancel">Cancel</sys:String>
+	<sys:String x:Key="YesButton">Yes</sys:String>
+	<sys:String x:Key="NoButton">No</sys:String>
+	<sys:String x:Key="CloseButton">Close</sys:String>
+	<sys:String x:Key="Clear">Clear</sys:String>
+	<sys:String x:Key="Support">Support</sys:String>
+	<sys:String x:Key="Tooltip" xml:space ="preserve">ToolTip: </sys:String>
+	<sys:String x:Key="Please_Scan">Please scan </sys:String>
+	<sys:String x:Key="Initialize_Printer">Initializing the printer...</sys:String>
+	<sys:String x:Key="Search">Search</sys:String>
+	<sys:String x:Key="Export">Export</sys:String>
+</ResourceDictionary>

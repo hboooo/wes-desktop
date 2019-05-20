@@ -1,0 +1,39 @@
+﻿<desktop:BaseWindow x:Class="Wes.Desktop.Windows.Options.View.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tab="clr-namespace:Wes.Desktop.Windows.Options"
+        xmlns:controls="clr-namespace:Wes.Desktop.Windows.Options.View"
+        xmlns:desktop="clr-namespace:Wes.Desktop.Windows"
+        xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+        mc:Ignorable="d"
+        Title="{lang:Language SettingsTitle}" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabControl" TabStripPlacement="Left" Background="Transparent" Margin="0,10" Padding="15 0 10 0" BorderBrush="#50A0A0A0" BorderThickness="1,0,0,0">
+            <tab:OptionTabItem Header="{lang:Language Appearance}">
+                <controls:SettingsAppearance/>
+            </tab:OptionTabItem>
+            <tab:OptionTabItem Header="{lang:Language Language}">
+                <controls:SettingsLanguage/>
+            </tab:OptionTabItem>
+            <tab:OptionTabItem Header="{lang:Language SerialName}">
+                <controls:SettingsSerialPort4Print/>
+            </tab:OptionTabItem>
+            <tab:OptionTabItem Header="{lang:Language Printer}">
+                <controls:SettingsPrinter/>
+            </tab:OptionTabItem>
+            <tab:OptionTabItem Header="{lang:Language General}">
+                <controls:SettingsGeneral/>
+            </tab:OptionTabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,30,20">
+            <Button Content="{lang:Language OkButton}" MinWidth="80" Click="btnOK_Click"/>
+            <Button Content="{lang:Language CancelButton}" MinWidth="80" Click="btnCancel_Click" Margin="10,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</desktop:BaseWindow>

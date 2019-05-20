@@ -1,0 +1,243 @@
+﻿<UserControl x:Class="Wes.Customer.Avnet.View.LabelingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls;assembly=Wes.Desktop.Windows"
+             xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:command="http://www.galasoft.ch/mvvmlight"
+             xmlns:local="clr-namespace:Wes.Customer.Avnet.View"
+             mc:Ignorable="d"
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <sys:Double x:Key="Double-24">16</sys:Double>
+        <sys:Double x:Key="Double-30">30</sys:Double>
+        <sys:Double x:Key="Double-50">50</sys:Double>
+        <sys:Double x:Key="Double-60">100</sys:Double>
+        <sys:Double x:Key="Double-300">300</sys:Double>
+        <Brush x:Key="Brush-3C3F41">#3C3F41</Brush>
+        <Brush x:Key="Brush-E21918">#E21918</Brush>
+        <Brush x:Key="Brush-DB543E">#DB543E</Brush>
+        <Brush x:Key="Brush-7E7E7E">#7E7E7E</Brush>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True" Margin="7">
+        <DockPanel DockPanel.Dock="Top">
+            <controls:WesImageListViewer MaxHeight="270" Width="270"
+                                         DockPanel.Dock="Right"
+                                         VerticalAlignment="Stretch"
+                                         ImageOrientation="Vertical"
+                                         Margin="7,0,0,1"
+                                         DataContext="{Binding}"
+                                         ImageSources="{Binding Info.imageViewList,Mode=OneWay}" />
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <controls:BarCodeScanFrame DataContext="{Binding}" x:Name="barCodeFrame"
+                                               ScanBoxValue="{Binding ScanValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               ScanTooltip="{Binding Tooltip, Mode=OneWay}"
+                                               CodeBoxKeyDown="{Binding ScanCommand,Mode=OneWay}"
+                                               CodeBoxClear="{Binding ClearCommand, Mode=OneWay}"
+                                               CodeBoxSupport="{Binding SupportCommand, Mode=OneWay}"/>
+                <!--复选框区域-->
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 15 0 0">
+                    <DockPanel Visibility="Collapsed">
+                        <CheckBox Name="CheckBoxIsHaveGw" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                              FontSize="{StaticResource Double-24}" Content="是否包含重量和材質" />
+                    </DockPanel>
+                </WrapPanel>
+                <!--只读input区域-->
+                <WrapPanel Orientation="Horizontal">
+                    <!--PID-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="Txt:"
+                               ToolTip="LoadingNo"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.txt, Mode=OneWay}"
+                        Width="{StaticResource Double-300}"
+                        FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--QTY-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="Caraton:"
+                               ToolTip="CaratonNo"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.carton, Mode=OneWay}"
+                        Name="TxtCaratonNo" Width="{StaticResource Double-300}"
+                        FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--QTY-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="QTY:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.qty, Mode=OneWay}"
+                        Name="TxtOneQty" Width="{StaticResource Double-300}" FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--LotNo-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="LotNo:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.lot, Mode=OneWay}"
+                        Name="TxtLotNo" Width="{StaticResource Double-300}" FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--DC-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="DateCode:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.dc, Mode=OneWay}"
+                        Name="TxtDateCode" Width="{StaticResource Double-300}"
+                        FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--MPN-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="MPN:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.mpn, Mode=OneWay}"
+                        Name="txtMpn" Width="{StaticResource Double-300}"
+                        FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--APN-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="APN:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.pn, Mode=OneWay}"
+                        Name="txtApn" Width="{StaticResource Double-300}"
+                        FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--QTY-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="OverQty:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.overQty, Mode=OneWay}"
+                        Name="TxtQty" Width="{StaticResource Double-300}" FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}" Foreground="{StaticResource Brush-E21918}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                    <!--QTY-->
+                    <DockPanel Margin="0 0 10 10" LastChildFill="True">
+                        <TextBlock Margin="0 0 7 0"
+                               Width="{StaticResource Double-60}" TextAlignment="Right" Text="Total:"
+                               FontSize="{StaticResource Double-24}" VerticalAlignment="Center" />
+                        <TextBox
+                        Text="{Binding Path=Info.totalQty, Mode=OneWay}"
+                        Name="TxtTotalQty" Width="{StaticResource Double-300}" FontSize="{StaticResource Double-24}"
+                        Height="{StaticResource Double-30}" Foreground="{StaticResource Brush-E21918}"
+                        IsReadOnly="True" IsEnabled="False" />
+                    </DockPanel>
+                </WrapPanel>
+
+                <Label FontSize="24" Margin="5,0,0,0" Name="labTips" VerticalContentAlignment="Center"
+                   Foreground="Red" />
+                <!--图片展示区-->
+                <!-- <permissionManage:UcLabelPictureList x:Name="UcLabelPic" Height="120" Margin="0 0 0 10" /> -->
+            </StackPanel>
+        </DockPanel>
+
+        <TabControl>
+            <TabItem Header="盘盒" FontSize="16" Width="100" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch">
+                <controls:DataGrid FontSize="12" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" Height="Auto"
+                                   ItemsSource="{Binding Info.panList, Mode=OneWay}">
+                    <controls:DataGrid.Columns>
+                        <controls:DataGridOrderColumn Header="SEQ" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Sxt#" Binding="{Binding sxt}" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Carton#" Binding="{Binding pid}" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Plate#" Binding="{Binding panNo}" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Part#" Binding="{Binding pn}" Width="*" />
+                        <controls:DataGridTextColumn Header="Lot#" Binding="{Binding lot}" Width="*" />
+                        <controls:DataGridTextColumn Header="Dc#" Binding="{Binding dc}" Width="*" />
+                        <controls:DataGridTextColumn Header="Qty" Binding="{Binding qty}" Width="*" />
+                        <controls:DataGridTextColumn Header="Box" Binding="{Binding boxNoDescribe}" Width="*" />
+                        <controls:DataGridTextColumn Header="IsLabeling" Binding="{Binding isLabelingDescribe}" Width="*" />
+                        <DataGridTemplateColumn Header="重新打印" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Command="{Binding DataContext.ReprintCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding rid}"
+                                        Content="重新打印" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="刪除盒" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Command="{Binding DataContext.DeleteBoxCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Content="刪除盒" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="刪除盤" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Command="{Binding DataContext.DeletePlateCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Content="刪除盤" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </controls:DataGrid.Columns>
+                </controls:DataGrid>
+            </TabItem>
+            <TabItem Header="箱数据" FontSize="16" Width="120" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch">
+                <!-- PackageID PartNo DateCode Qty 盘数 最小包規 QTY 剩餘盘数 -->
+                <controls:DataGrid FontSize="12" 
+                                   IsReadOnly="True" 
+                                   CanUserAddRows="False" 
+                                   AutoGenerateColumns="False"
+                                   ItemsSource="{Binding Info.cartonList, Mode=OneWay}">
+                    <controls:DataGrid.Columns>
+                        <controls:DataGridOrderColumn Header="SEQ" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Sxt#" Binding="{Binding sxt}" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Carton#" Binding="{Binding pid}" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Part#" Binding="{Binding pn}" Width="Auto" />
+                        <controls:DataGridTextColumn Header="Lot#" Binding="{Binding lot}" Width="*" />
+                        <controls:DataGridTextColumn Header="Dc#" Binding="{Binding dc}" Width="*" />
+                        <controls:DataGridTextColumn Header="Qty" Binding="{Binding qty}" Width="*" />
+                        <controls:DataGridTextColumn Header="MinQty" Binding="{Binding minQty}" Width="*" />
+                        <controls:DataGridTextColumn Header="PlateTotal" Binding="{Binding plateTotal}" Width="*" />
+                        <controls:DataGridTextColumn Header="PlateOverTotal" Binding="{Binding overPlateTotal}" Width="*" />
+                        <controls:DataGridTextColumn Header="IsLabeling" Binding="{Binding isLabelingDescribe}" Width="*" />
+                    </controls:DataGrid.Columns>
+                </controls:DataGrid>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,393 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
+                    xmlns:controls="clr-namespace:FirstFloor.ModernUI.Windows.Controls;assembly=FirstFloor.ModernUI"
+                    xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+                    xmlns:wes="clr-namespace:Wes.Desktop.Windows"
+                    xmlns:converter="clr-namespace:Wes.Desktop.Windows.Converters">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Wes.Desktop.Windows;component/Themes/WesCommonStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <converter:BaseWindowTagtoVisibilityConverter x:Key="baseWindowTagtoVisibilityConverter"/>
+    <converter:BaseWindowSettingVisibilityConverter x:Key="baseWindowSettingVisibilityConverter"/>
+    <converter:BaseWindowMaskConverter x:Key="baseWindowMaskConverter"/>
+    <converter:HalfValueConverter x:Key="halfValueConverter"/>
+    <converter:ThirdValueConverter x:Key="thirdValueConverter"/>
+
+    <Style x:Key="EmptyWindow"
+           BasedOn="{StaticResource {x:Type controls:ModernWindow}}"
+           TargetType="controls:ModernWindow">
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="IsTitleVisible" Value="True" />
+        <Setter Property="MinWidth" Value="850"/>
+        <Setter Property="MinHeight" Value="680"/>
+        <Setter Property="DataContext">
+            <Setter.Value>
+                <wes:BaseWindowViewModel/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ModernWindow">
+
+                    <Border x:Name="WindowBorder" Margin="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowNonClientFrameThickness}">
+                        <Border.Background>
+                            <SolidColorBrush x:Name="WindowBorderBackground" Color="{DynamicResource WindowBackgroundColor}" />
+                        </Border.Background>
+                        <Border.Resources>
+                            <Storyboard x:Key="BackgroundAnimation">
+                                <ColorAnimation Duration="0:0:.6"
+                                                Storyboard.TargetName="WindowBorderBackground"
+                                                Storyboard.TargetProperty="Color"
+                                                To="{DynamicResource WindowBackgroundColor}" />
+                            </Storyboard>
+
+                        </Border.Resources>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+
+                            <Grid>
+                                <AdornerDecorator>
+                                    <Grid x:Name="LayoutRoot">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="36" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <!--  window background content  -->
+                                        <ContentControl Grid.RowSpan="2" Content="{TemplateBinding BackgroundContent}" />
+
+                                        <!--  window content  -->
+                                        <ContentPresenter Grid.Row="1" Margin="{TemplateBinding Padding}" />
+
+                                        <!--  title bar  -->
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="96" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!--  title  -->
+                                            <TextBlock Margin="8,0"
+                                                   VerticalAlignment="Center"
+                                                   DataContext="{TemplateBinding IsTitleVisible}"
+                                                   Style="{StaticResource ModernWindowTitle}"
+                                                   Text="{TemplateBinding Title}"
+                                                   Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                                            <!--  setting  -->
+                                            <Border x:Name="spSetting" 
+                                                    Visibility="{TemplateBinding Name,Converter={StaticResource baseWindowTagtoVisibilityConverter}}" 
+                                                    shell:WindowChrome.IsHitTestVisibleInChrome="True" 
+                                                    Grid.Column="1" 
+                                                    HorizontalAlignment="Right" 
+                                                    Margin="3 0 0 0"
+                                                    BorderThickness="0 0 0 1"
+                                                    BorderBrush="{DynamicResource Accent}">
+
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="-3 0 0 0">
+                                                    <!--Menu-->
+                                                    <Button Command="{Binding Source={x:Static wes:BaseWindowCommand.Menu}}"
+                                                            Visibility="{TemplateBinding Name,Converter={StaticResource baseWindowSettingVisibilityConverter}}"
+                                                            Style="{StaticResource WesCommandButton}">
+                                                        <Button.Content>
+                                                            <Border
+                                                                Background="{TemplateBinding Background}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                SnapsToDevicePixels="true">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition/>
+                                                                        <ColumnDefinition/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Path Width="20" Height="20" Margin="0,0,0,0"
+                                                                                          HorizontalAlignment="Center"
+                                                                                          VerticalAlignment="Center" 
+                                                                                          Data="{DynamicResource AccountHeader}"
+                                                                                          Fill="{DynamicResource Accent}"
+                                                                                          Stretch="Fill" />
+                                                                    <TextBlock Grid.Column="1" Margin="5,0,0,0"
+                                                                   Text="{Binding Path=UserID}"
+                                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                                </Grid>
+                                                            </Border>
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                    <!--Robot-->
+                                                    <Button Command="{Binding Source={x:Static wes:BaseWindowCommand.Robot}}"
+                                                    Style="{StaticResource WesCommandButton}" ToolTip="有问题？快来咨询我吧">
+                                                        <Button.Content>
+                                                            <Border
+                                                                Background="{TemplateBinding Background}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                SnapsToDevicePixels="true">
+                                                                <Path Width="20" Height="20" Margin="0,0,0,0"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" 
+                                                                  Data="{DynamicResource WesRobot}"
+                                                                  Fill="{DynamicResource Accent}"
+                                                                  Stretch="Fill" />
+                                                            </Border>
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                    <!--AddIn-->
+                                                    <Button Command="{Binding Source={x:Static wes:BaseWindowCommand.AddIn}}"
+                                                    Style="{StaticResource WesCommandButton}" VerticalAlignment="Stretch">
+                                                        <Button.Content>
+                                                            <Border BorderThickness="0" Opacity="0.3" 
+                                                                Background="{DynamicResource Accent}" 
+                                                                CornerRadius="0 12 0 12" Margin="0 0 0 0">
+                                                                <TextBlock Padding="3" Margin="0,-2,0,0" Style="{StaticResource titleCustomerTextBlock}"
+                                                                Text="{Binding Path=EndCustomerName}" />
+                                                            </Border>
+                                                        </Button.Content>
+                                                        <Button.ToolTip>
+                                                            <TextBlock Text="{Binding Path=EndCustomerDetails}"/>
+                                                        </Button.ToolTip>
+                                                    </Button>
+
+                                                </StackPanel>
+
+                                            </Border>
+
+                                            <!--  logo (visible only when LogoData is not null)  -->
+                                            <Border Grid.Column="2"
+                                                Height="36" Width="80"
+                                                Margin="0 0 8 0"
+                                                Background="{DynamicResource Accent}"
+                                                DataContext="{DynamicResource WesLogo}"
+                                                Visibility="{Binding Converter={StaticResource NullToVisibilityConverter},
+                                                                     ConverterParameter=inverse}">
+                                                <Path
+                                                  Height="24"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Data="{Binding}"
+                                                  Fill="White" Margin="3,24,3,-24" 
+                                                  Stretch="Fill" >
+                                                    <Path.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                                                        </TransformGroup>
+                                                    </Path.RenderTransform>
+                                                </Path>
+                                            </Border>
+
+                                            <!--  window system buttons  -->
+                                            <StackPanel Grid.Column="3"
+                                                    VerticalAlignment="Top"
+                                                    Orientation="Horizontal"
+                                                    shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                                <Button Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}"
+                                                    Style="{StaticResource SystemButton}" ToolTip="{lang:Language Minimize}">
+                                                    <Button.Content>
+                                                        <Grid Width="13"
+                                                          Height="12"
+                                                          RenderTransform="1,0,0,1,0,1">
+                                                            <Path Width="8"
+                                                              Height="7"
+                                                              HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"
+                                                              Data="M0,6 L8,6 Z"
+                                                              Stroke="{Binding Foreground,
+                                                                               RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                              AncestorType=Button}}"
+                                                              StrokeThickness="2" />
+                                                        </Grid>
+                                                    </Button.Content>
+                                                </Button>
+                                                <Grid Margin="1,0,1,0">
+                                                    <Button x:Name="Restore"
+                                                        Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
+                                                        Style="{StaticResource SystemButton}"
+                                                        Visibility="Hidden" ToolTip="{lang:Language Restore}">
+                                                        <Button.Content>
+                                                            <Grid Width="13"
+                                                              Height="12"
+                                                              RenderTransform="1,0,0,1,.5,.5"
+                                                              UseLayoutRounding="True">
+                                                                <Path Width="8"
+                                                                  Height="8"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"
+                                                                  Data="M2,0 L8,0 L8,6 M0,3 L6,3 M0,2 L6,2 L6,8 L0,8 Z"
+                                                                  Stroke="{Binding Foreground,
+                                                                                   RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                                  AncestorType=Button}}"
+                                                                  StrokeThickness="1" />
+                                                            </Grid>
+                                                        </Button.Content>
+                                                    </Button>
+                                                    <Button x:Name="Maximize"
+                                                        Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}"
+                                                        Style="{StaticResource SystemButton}" ToolTip="{lang:Language Maximize}">
+                                                        <Button.Content>
+                                                            <Grid Width="13" Height="12">
+                                                                <Path Width="9"
+                                                                  Height="8"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"
+                                                                  Data="M0,1 L9,1 L9,8 L0,8 Z"
+                                                                  Stroke="{Binding Foreground,
+                                                                                   RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                                  AncestorType=Button}}"
+                                                                  StrokeThickness="2" />
+                                                            </Grid>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </Grid>
+                                                <Button Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}"
+                                                    Style="{StaticResource SystemCloseButton}"  ToolTip="{lang:Language Close}">
+                                                    <Button.Content>
+                                                        <Grid Width="13"
+                                                          Height="12"
+                                                          RenderTransform="1,0,0,1,0,1">
+                                                            <Path Width="8"
+                                                              Height="7"
+                                                              HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"
+                                                              Data="M0,0 L8,7 M8,0 L0,7 Z"
+                                                              Stroke="{Binding Foreground,
+                                                                               RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                              AncestorType=Button}}"
+                                                              StrokeThickness="1.5" />
+                                                        </Grid>
+                                                    </Button.Content>
+                                                </Button>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <!--  resize grip  -->
+                                        <Grid x:Name="ResizeGrip"
+                                          Grid.Row="1"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Bottom"
+                                          Background="Transparent"
+                                          Visibility="Collapsed"
+                                          shell:WindowChrome.ResizeGripDirection="BottomRight">
+                                            <Path Width="12"
+                                              Height="12"
+                                              Margin="1"
+                                              Data="F1 M1,10 L3,10 M5,10 L7,10 M9,10 L11,10 M2,9 L2,11 M6,9 L6,11 M10,9 L10,11 M5,6 L7,6 M9,6 L11,6 M6,5 L6,7 M10,5 L10,7 M9,2 L11,2 M10,1 L10,3"
+                                              Stretch="None"
+                                              Stroke="{DynamicResource WindowText}"
+                                              StrokeThickness="1" />
+                                        </Grid>
+                                    </Grid>
+                                </AdornerDecorator>
+                                <Border x:Name="borderMark" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                            Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type wes:BaseWindow}},Path=MaskVisibility}">
+                                    <Canvas x:Name="InfoCanvas">
+                                        <Border HorizontalAlignment="Stretch" Opacity=".90" VerticalAlignment="Stretch" Background="{DynamicResource Accent}" 
+                                                Width="{Binding ActualWidth, ElementName=InfoCanvas}"
+                                                Height="{Binding ActualHeight, ElementName=InfoCanvas}">
+                                        </Border>
+                                        <TextBlock x:Name="PrintLabelCount" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type wes:BaseWindow}},Path=PrintLabelCount,UpdateSourceTrigger=PropertyChanged}"
+                                                   FontSize="80" Foreground="White" Margin="0,-100,0,0" >
+                                            <Canvas.Left>
+                                                <MultiBinding Converter="{StaticResource halfValueConverter}">
+                                                    <Binding ElementName="InfoCanvas" Path="ActualWidth" />
+                                                    <Binding ElementName="PrintLabelCount" Path="ActualWidth" />
+                                                </MultiBinding>
+                                            </Canvas.Left>
+                                            <Canvas.Top>
+                                                <MultiBinding Converter="{StaticResource thirdValueConverter}">
+                                                    <Binding ElementName="InfoCanvas" Path="ActualHeight" />
+                                                    <Binding ElementName="PrintLabelCount" Path="ActualHeight" />
+                                                </MultiBinding>
+                                            </Canvas.Top>
+                                            <TextBlock.Effect>
+                                                <DropShadowEffect Color="Black" BlurRadius="3" ShadowDepth="1"></DropShadowEffect>
+                                            </TextBlock.Effect>
+                                        </TextBlock>
+                                        <WrapPanel x:Name="wpMessageContent">
+                                            <Canvas.Left>
+                                                <MultiBinding Converter="{StaticResource halfValueConverter}">
+                                                    <Binding ElementName="InfoCanvas" Path="ActualWidth" />
+                                                    <Binding ElementName="wpMessageContent" Path="ActualWidth" />
+                                                </MultiBinding>
+                                            </Canvas.Left>
+                                            <Canvas.Top>
+                                                <MultiBinding Converter="{StaticResource thirdValueConverter}">
+                                                    <Binding ElementName="InfoCanvas" Path="ActualHeight" />
+                                                    <Binding ElementName="wpMessageContent" Path="ActualHeight" />
+                                                </MultiBinding>
+                                            </Canvas.Top>
+                                            <TextBlock x:Name="TextBoxLockIntensiveMessage" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type wes:BaseWindow}},Path=MaskIntensiveContent}" 
+                                                   FontSize="64" Foreground="White">
+                                                <TextBlock.Effect>
+                                                    <DropShadowEffect Color="Black" BlurRadius="3" ShadowDepth="1"></DropShadowEffect>
+                                                </TextBlock.Effect>
+                                            </TextBlock>
+                                            <TextBlock x:Name="TextBoxLockMessage" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type wes:BaseWindow}},Path=MaskContent}" 
+                                                   FontSize="64" Foreground="White">
+                                                <TextBlock.Effect>
+                                                    <DropShadowEffect Color="Black" BlurRadius="3" ShadowDepth="1"></DropShadowEffect>
+                                                </TextBlock.Effect>
+                                            </TextBlock>
+                                        </WrapPanel>
+
+                                        <Border Margin="0 200 0 0" Width="380" Height="380" x:Name="labelImageBorder">
+                                            <Image Stretch="Uniform" x:Name="labelImage" Margin="6"
+                                               Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type wes:BaseWindow}},Path=LabelImageSource}">
+                                            </Image>
+                                            <Canvas.Left>
+                                                <MultiBinding Converter="{StaticResource halfValueConverter}">
+                                                    <Binding ElementName="InfoCanvas" Path="ActualWidth" />
+                                                    <Binding ElementName="labelImageBorder" Path="Width" />
+                                                </MultiBinding>
+                                            </Canvas.Left>
+                                            <Canvas.Top>
+                                                <MultiBinding Converter="{StaticResource thirdValueConverter}">
+                                                    <Binding ElementName="InfoCanvas" Path="ActualHeight" />
+                                                    <Binding ElementName="labelImageBorder" Path="Height" />
+                                                </MultiBinding>
+                                            </Canvas.Top>
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="DarkGray" BlurRadius="6" ShadowDepth="2"></DropShadowEffect>
+                                            </Border.Effect>
+                                        </Border>
+                                    </Canvas>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsActive" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderActive}" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="LayoutRoot" Property="Margin" Value="7" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode" Value="CanResizeWithGrip" />
+                                <Condition Property="WindowState" Value="Normal" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Same as 'EmptyWindow', but a better resource name  -->
+    <Style x:Key="wesBaseWindow"
+           BasedOn="{StaticResource EmptyWindow}"
+           TargetType="controls:ModernWindow" />
+</ResourceDictionary>

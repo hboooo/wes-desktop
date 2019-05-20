@@ -1,0 +1,12 @@
+﻿<Window x:Class="WesWebBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:local="clr-namespace:WesWebBrowser" Title="{Binding ElementName=mainWindow,Path=WindowTitle}"
+        mc:Ignorable="d" WindowState="Normal" x:Name="mainWindow">
+    <Grid>
+        <cefSharp:ChromiumWebBrowser x:Name="webBrowser" Grid.Row="0" Address="{Binding ElementName=mainWindow,Path=Url}" />
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+
+
+step 1:
+    make directory C:/wes-v2
+
+step 2:
+    copy all file to C:/wes-v2/
+
+step 3:
+    execute Wes.Launcher.exe

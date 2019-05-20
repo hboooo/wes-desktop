@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="LoginWindowTitle">登錄</sys:String>
+	<sys:String x:Key="UserID">用戶</sys:String>
+	<sys:String x:Key="Password">密碼</sys:String>
+	<sys:String x:Key="Station">工站</sys:String>
+	<sys:String x:Key="EndCustomer">客戶</sys:String>
+	<sys:String x:Key="Login">登錄</sys:String>
+	<sys:String x:Key="AccountError">賬戶或密碼錯誤，請重新輸入</sys:String>
+	<sys:String x:Key="DeviceError">掃描工站錯誤，請重新輸入</sys:String>
+	<sys:String x:Key="AccountNull">請輸入賬戶</sys:String>
+	<sys:String x:Key="PasswordNull">請輸入密碼</sys:String>
+	<sys:String x:Key="StationNull">請掃描工站</sys:String>
+</ResourceDictionary>

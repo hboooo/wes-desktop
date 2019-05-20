@@ -1,0 +1,13 @@
+﻿<windows:BaseWindow x:Class="Wes.Desktop.Windows.Common.WesUpdateBinNo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:windows="clr-namespace:Wes.Desktop.Windows" ResizeMode="NoResize" 
+             Width="600" MinWidth="600" Height="320" MinHeight="320" WindowStartupLocation="CenterScreen" Title="更新儲位" >
+    <StackPanel VerticalAlignment="Center">
+        <Label DockPanel.Dock="Left" Content="儲位" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold" Padding="10" />
+        <TextBox Width="200" Name="txtBinNo" VerticalContentAlignment="Center" Height="50" TextAlignment="Center" FontSize="22" FontWeight="Bold" KeyDown="TxtBinNo_OnKeyDown"/>
+        <Label DockPanel.Dock="Bottom" Name="txtTip" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFFF1100" FontSize="14"/>
+    </StackPanel>
+</windows:BaseWindow>

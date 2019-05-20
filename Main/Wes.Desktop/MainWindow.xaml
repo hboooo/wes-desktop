@@ -1,0 +1,75 @@
+﻿<desktop:BaseWindow x:Class="Wes.Desktop.MainWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:desktop="clr-namespace:Wes.Desktop.Windows;assembly=Wes.Desktop.Windows"
+                  xmlns:controls="clr-namespace:Wes.Desktop.Windows.Controls;assembly=Wes.Desktop.Windows"
+                  xmlns:lang="clr-namespace:Wes.Utilities.Languages;assembly=Wes.Utilities"
+                  WindowStartupLocation="CenterScreen"
+                  xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                  Width="1024" x:Name="mainWindow"
+                  Title="{lang:Language MainWindowTitle}"
+                  Height="568">
+    <Grid x:Name="mainContent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackPanel Visibility="{Binding ProgressVisibility,Mode=OneWay}">
+                <ProgressBar Minimum="0" Maximum="1" Height="20" Margin="50,5" IsIndeterminate="true"/>
+                <TextBlock HorizontalAlignment="Center" Opacity=".6" Text="{Binding ProgressText,Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center">
+                <TextBlock Foreground="Red" HorizontalAlignment="Left" Text="{Binding OutputMessage,Mode=OneWay}"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="40,0,40,0" VerticalAlignment="Center">
+            <controls:BarCodeScanFrame x:Name="barCodeFrame" Width="500" IsEnabled="False" ScanBoxValue="{Binding ScanValue,Mode=TwoWay}"
+                                       CodeBoxKeyDown="{Binding ScanCommand}" 
+                                       ClearButtonVisibility="Collapsed" 
+                                       SupportButtonVisibility="Collapsed" 
+                                       ScanTooltip="{Binding BarcodeTooltip}"/>
+        </StackPanel>
+
+        <WrapPanel x:Name="navigatorWrapPanel" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <mui:ModernProgressRing VerticalAlignment="Center" HorizontalAlignment="Center" IsActive="True" Width="80" Height="80"/>
+        </WrapPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <TextBlock Cursor="Hand" x:Name="txtVersion" HorizontalAlignment="Left" Margin="2,0,0,0" Opacity=".5" Text="{Binding VersionInfo,Mode=OneWay}"/>
+        </StackPanel>
+
+        <Grid x:Name="menuGrid" Width="{Binding LeftMenuWidth}" Margin="-10 35 0 25" Grid.RowSpan="4" HorizontalAlignment="Left">
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="gridTranslateTransform" X="0" Y="0" />
+            </Grid.RenderTransform>
+            <Button Command="{Binding LeftMenuCommand}" Opacity="0.2" Panel.ZIndex="-1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20 -23 0" Style="{StaticResource WesCommandButton}" ToolTip="更多功能">
+                <Button.Content>
+                    <Grid SnapsToDevicePixels="true" >
+                        <Path Data="M0,0 L100,40 100,160 0,200z" Stroke="{DynamicResource Accent}" Fill="{DynamicResource Accent}"  Width="22" Height="65" Stretch="Fill"/>
+                        <Path Width="14" Height="14" Margin="0,0,0,0"
+                                                                  HorizontalAlignment="Left"
+                                                                  VerticalAlignment="Center" 
+                                                                  Data="{DynamicResource LeftMenu}"
+                                                                  Fill="White"
+                                                                  Stretch="Fill" />
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Path Data="M0,0 L100,0 100,185 0,200z" Opacity="0.2" Stroke="{DynamicResource Accent}" Fill="{DynamicResource Accent}" Stretch="Fill"/>
+            <Viewbox Margin="10 10 10 25" VerticalAlignment="Top">
+                <Viewbox.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="gridScaleTransform" ScaleX="1"/>
+                    </TransformGroup>
+                </Viewbox.LayoutTransform>
+                <StackPanel x:Name="leftMenuPanel" VerticalAlignment="Top">
+
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</desktop:BaseWindow>
+
